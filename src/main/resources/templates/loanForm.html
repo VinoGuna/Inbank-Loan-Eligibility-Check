@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+	border: 3px solid #f1f1f1;
+}
+
+input[type=text] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+button {
+	background-color: #04AA6D;
+	color: White;
+	padding: 14px 14px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 30%;
+}
+
+button:hover {
+	opacity: 0.5;
+}
+
+.imgcontainer {
+	text-align: center;
+	margin: 12px 0 12px 0;
+}
+
+img.avatar {
+	width: 40%;
+	border-radius: 50%;
+}
+
+.container {
+	padding: 10px;
+}
+
+span.psw {
+	float: right;
+	padding-top: 16px;
+}
+
+.slider {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 200px;
+	height: 1px;
+	padding: 15px;
+	padding-left: 15px;
+	background: #fcfcfc;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	box-shadow: 0px 15px 40px #7E6D5766;
+}
+
+.slider p {
+	font-size: 10px;
+	font-weight: 600;
+	font-family: Open Sans;
+	padding-left: 30px;
+	color: black;
+}
+
+.slider input[type="range"] {
+	-webkit-appearance: none !important;
+	width: 150px;
+	height: 4px;
+	background: black;
+	border: none;
+	outline: none;
+}
+
+.slider input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none !important;
+	width: 15px;
+	height: 15px;
+	background: Green;
+	border: 3px solid green;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.slider input[type="range"]::-webkit-slider-thumb:hover {
+	background: Black;
+}
+</style>
+</head>
+<body style="background-color: #483D8B;">
+
+	<h2>Apply for Loan</h2>
+
+	<h2 data-th-text=${errorMsg}></h2>
+
+	<form method="post" action="loan/validateForm">
+
+
+		<div class="container">
+			<label for="pcode"><b>Personal Code</b></label> <input type="text"
+				placeholder="Enter Personal Code" name="pcode" required>
+
+			<div class="container">
+				<label for="lAmount"><b>Loan Amount (in EUR)</b></label> <input
+					type="text" placeholder="Enter Loan Amount" name="lAmount" required>
+
+
+				<p>
+					<b>Loan Period (in Months)</b>
+				</p>
+				<div class="slide">
+					<input type="range" min="12" max="60" value="1"
+						oninput="rangeValue.innerText = this.value" name="lterm" required>
+					<p id="rangeValue">12</p>
+				</div>
+
+				<button style="background-color: Blue;" type="submit">Calculate</button>
+
+			</div>
+
+		</div>
+
+	</form>
+
+</body>
+</html>
